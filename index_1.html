@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EPA Ghana – Screening Report Form</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eef2ec;color:#1a1a1a;min-height:100vh;padding:24px 12px 56px}
+.page-wrap{max-width:920px;margin:0 auto}
+
+/* ── HEADER ── */
+.form-header{background:linear-gradient(135deg,#1a4a1f 0%,#2e7d32 60%,#388e3c 100%);color:#fff;padding:0;border-radius:12px 12px 0 0;overflow:hidden}
+.header-inner{display:flex;align-items:center;gap:20px;padding:18px 28px 16px}
+.logo-circle{width:72px;height:72px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.25)}
+.header-text{flex:1}
+.header-text h1{font-size:19px;font-weight:700;line-height:1.3;letter-spacing:0.2px}
+.header-text .sub{font-size:12.5px;margin-top:3px;opacity:0.88}
+.header-text .sub2{font-size:11.5px;margin-top:2px;opacity:0.72;font-style:italic}
+.header-strip{background:rgba(0,0,0,0.18);padding:6px 28px;font-size:11.5px;letter-spacing:0.4px;text-transform:uppercase;opacity:0.9}
+
+/* ── BODY ── */
+.form-body{background:#fff;border:1px solid #c8d8c8;border-top:none;border-radius:0 0 12px 12px;padding:28px 30px 36px}
+
+.notice{font-size:12.5px;color:#444;font-style:italic;background:#f1f8e9;border-left:4px solid #558b2f;padding:10px 14px;border-radius:0 6px 6px 0;margin-bottom:22px;line-height:1.6}
+
+/* ── SECTION HEAD ── */
+.section-head{background:#2e7d32;color:#fff;padding:9px 16px;border-radius:7px;font-size:13.5px;font-weight:700;margin:28px 0 16px;letter-spacing:0.3px;display:flex;align-items:center;gap:8px}
+.section-head svg{flex-shrink:0}
+.sub-head{font-size:13px;font-weight:700;color:#1a4a1f;margin:16px 0 8px;padding-bottom:5px;border-bottom:1.5px solid #c8e6c9}
+
+/* ── FIELDS ── */
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;color:#444;margin-bottom:4px;font-weight:600}
+.field label .req{color:#c62828;margin-left:2px}
+.field input[type=text],.field input[type=date],.field textarea,.field select{width:100%;border:1px solid #b0c4b0;border-radius:6px;padding:8px 11px;font-size:13.5px;color:#1a1a1a;background:#fff;font-family:inherit;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:#2e7d32;box-shadow:0 0 0 3px rgba(46,125,50,.12)}
+.field input.invalid,.field textarea.invalid{border-color:#c62828!important;background:#fff8f8}
+.field textarea{resize:vertical;min-height:78px;line-height:1.55}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.span2{grid-column:span 2}
+.span3{grid-column:span 3}
+
+/* ── MAP BOX ── */
+.map-box{border:1.5px dashed #81c784;border-radius:8px;height:110px;background:#f9fbe7;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#558b2f;font-size:13px;margin:6px 0 14px}
+
+/* ── CONSULT TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.ctable th{background:#e8f5e9;padding:8px 10px;text-align:left;font-weight:700;border:1px solid #c8e6c9;font-size:12px;color:#1b5e20}
+.ctable td{border:1px solid #dcedc8;padding:2px 3px}
+.ctable td:first-child{text-align:center;font-size:12px;color:#888;width:36px;background:#f9fbe7}
+.ctable td input{width:100%;border:none;padding:6px 8px;font-size:13px;font-family:inherit;background:transparent;color:#1a1a1a}
+.ctable td input:focus{outline:none;background:#f1f8e9}
+
+/* ── CHECKBOXES ── */
+.check-group{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.check-row{display:flex;align-items:center;gap:10px;font-size:13.5px;cursor:pointer;padding:7px 10px;border-radius:6px;border:1px solid #e0e0e0;transition:background .15s}
+.check-row:hover{background:#f1f8e9}
+.check-row input[type=checkbox]{width:17px;height:17px;accent-color:#2e7d32;cursor:pointer;flex-shrink:0}
+
+/* ── DECLARATION ── */
+.decl-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+.decl-card{border:1px solid #c8e6c9;border-radius:9px;padding:16px 18px;background:#f9fbe7}
+.decl-label{font-size:12px;font-weight:700;color:#2e7d32;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px}
+canvas.sig-pad{width:100%;height:72px;border:1px solid #b0c4b0;border-radius:6px;background:#fff;cursor:crosshair;display:block;touch-action:none}
+.sig-ctrl{display:flex;justify-content:flex-end;margin-top:3px}
+.sig-clear{font-size:11.5px;color:#c62828;background:none;border:none;cursor:pointer;font-family:inherit;padding:2px 4px}
+.sig-clear:hover{text-decoration:underline}
+
+/* ── BUTTONS ── */
+.btn-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{padding:10px 22px;border-radius:7px;font-size:14px;cursor:pointer;border:none;font-family:inherit;font-weight:600;display:flex;align-items:center;gap:7px;transition:filter .15s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn-pdf{background:#1b5e20;color:#fff}
+.btn-pdf:hover{filter:brightness(1.12)}
+.btn-draft{background:#f5f5f5;color:#333;border:1px solid #ccc}
+.btn-draft:hover{background:#ebebeb}
+.btn-submit{background:#e65100;color:#fff}
+.btn-submit:hover{filter:brightness(1.1)}
+.btn-reset{background:#fff;color:#888;border:1px solid #ddd}
+.btn-reset:hover{background:#f5f5f5}
+.req-note{font-size:11.5px;color:#888;margin-top:10px}
+.req-note span{color:#c62828}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(70px);background:#2e7d32;color:#fff;padding:11px 24px;border-radius:8px;font-size:13.5px;opacity:0;transition:opacity .3s,transform .3s;z-index:9999;white-space:nowrap;pointer-events:none}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.err{background:#c62828}
+
+/* ── PRINT ── */
+@media print{
+  body{background:#fff;padding:0}
+  .page-wrap{max-width:100%}
+  .form-header{background:#2e7d32!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;border-radius:0}
+  .section-head{background:#2e7d32!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .btn-row,#toast{display:none!important}
+  .form-body{border:none;padding:14px 0 0;border-radius:0}
+  .field input,.field textarea{border:1px solid #999!important;background:#fff!important}
+  canvas.sig-pad{border:1px solid #999}
+  .notice{background:#f5f5f5!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{margin:13mm 11mm;size:A4}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .g2,.g3,.g4,.decl-grid{grid-template-columns:1fr}
+  .span2,.span3{grid-column:span 1}
+  .header-inner{flex-direction:column;align-items:center;text-align:center;padding:16px}
+  .form-body{padding:16px 14px 24px}
+  .header-text h1{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="form-header">
+  <div class="header-inner">
+    <div class="logo-circle">
+      <!-- EPA Ghana emblem (SVG recreation) -->
+      <svg width="58" height="58" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="29" cy="29" r="27" fill="#1a4a1f" stroke="#f9a825" stroke-width="2.5"/>
+        <!-- Inner ring -->
+        <circle cx="29" cy="29" r="22" fill="none" stroke="#f9a825" stroke-width="1"/>
+        <!-- Sky / background -->
+        <circle cx="29" cy="29" r="21" fill="#1b6b22"/>
+        <!-- Ground -->
+        <ellipse cx="29" cy="44" rx="17" ry="5" fill="#2d5a1b"/>
+        <!-- Tree trunk -->
+        <rect x="27" y="32" width="4" height="12" rx="1.5" fill="#5d3a1a"/>
+        <!-- Tree canopy layers -->
+        <ellipse cx="29" cy="34" rx="10" ry="6" fill="#43a047"/>
+        <ellipse cx="29" cy="28" rx="8" ry="5.5" fill="#388e3c"/>
+        <ellipse cx="29" cy="23" rx="6" ry="4.5" fill="#2e7d32"/>
+        <ellipse cx="29" cy="19" rx="4" ry="3.5" fill="#1b5e20"/>
+        <!-- Sun rays -->
+        <g stroke="#f9a825" stroke-width="1.2" opacity="0.85">
+          <line x1="29" y1="6" x2="29" y2="9"/>
+          <line x1="38" y1="8.5" x2="36.5" y2="11"/>
+          <line x1="44.5" y1="15" x2="42" y2="16.5"/>
+          <line x1="47" y1="24" x2="44" y2="24"/>
+          <line x1="20" y1="8.5" x2="21.5" y2="11"/>
+          <line x1="13.5" y1="15" x2="16" y2="16.5"/>
+          <line x1="11" y1="24" x2="14" y2="24"/>
+        </g>
+        <!-- Stars (Ghana flag stars style) top arc -->
+        <g fill="#f9a825">
+          <polygon points="29,10 29.6,11.9 31.5,11.9 30,13 30.6,14.9 29,13.8 27.4,14.9 28,13 26.5,11.9 28.4,11.9" transform="scale(0.55) translate(23,8)"/>
+        </g>
+        <!-- EPA text arc at bottom -->
+        <path id="arc" d="M 12,40 A 18,18 0 0,0 46,40" fill="none"/>
+        <text font-size="5.5" font-weight="700" fill="#f9a825" font-family="Arial,sans-serif" letter-spacing="1">
+          <textPath href="#arc" startOffset="12%">ENVIRONMENTAL PROTECTION</textPath>
+        </text>
+        <!-- EPA letters bold in centre -->
+        <text x="29" y="47.5" text-anchor="middle" font-size="5" font-weight="900" fill="#fff" font-family="Arial,sans-serif" letter-spacing="1.5">AGENCY</text>
+        <!-- Ghana text -->
+        <text x="29" y="52.5" text-anchor="middle" font-size="4.2" font-weight="700" fill="#f9a825" font-family="Arial,sans-serif" letter-spacing="1">GHANA</text>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Environmental Protection Agency — Ghana</h1>
+      <div class="sub">Screening Report Form &nbsp;|&nbsp; All Sectors</div>
+      <div class="sub2">Ministry of Environment, Science, Technology &amp; Innovation</div>
+    </div>
+  </div>
+  <div class="header-strip">Project Screening Report Form &nbsp;·&nbsp; Statutory Environmental Assessment</div>
+</div>
+
+<!-- ══════════ FORM BODY ══════════ -->
+<div class="form-body">
+
+  <p class="notice">
+    <strong>Important:</strong> This form must be completed by at least two (2) EPA officers only after visiting the project site. All fields marked <span style="color:#c62828">*</span> are mandatory.
+  </p>
+
+  <!-- Top fields -->
+  <div class="g2">
+    <div class="field">
+      <label>Registration / File No <span class="req">*</span></label>
+      <input type="text" id="reg_no" placeholder="e.g. EPA/HQ/2025/001">
+    </div>
+    <div class="field">
+      <label>Date of Receipt of Form EA1 <span class="req">*</span></label>
+      <input type="date" id="date_receipt">
+    </div>
+    <div class="field">
+      <label>Inspection Date <span class="req">*</span></label>
+      <input type="date" id="date_inspection">
+    </div>
+    <div class="field">
+      <label>Name of Proponent / Contact Person</label>
+      <input type="text" id="proponent_name" placeholder="Full name of proponent or contact">
+    </div>
+    <div class="field span2">
+      <label>Company / Organisation Name <span class="req">*</span></label>
+      <input type="text" id="company_name" placeholder="Full registered name of company or organisation">
+    </div>
+  </div>
+
+  <!-- ── SECTION A ── -->
+  <div class="section-head">
+    <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+    Section A: Information Analysis and Inspection Results
+  </div>
+  <div class="sub-head">1.0 Description of Proposed Undertaking</div>
+
+  <div class="field">
+    <label>1.1 Type of Undertaking <span class="req">*</span></label>
+    <input type="text" id="type_undertaking" placeholder="e.g. Manufacturing Plant, Hotel, Mining, Hospital, Agro-processing, Real Estate…">
+  </div>
+
+  <div class="sub-head" style="margin-top:4px">1.2 Components <span class="req">*</span></div>
+  <div class="g2">
+    <div class="field"><label>(1)</label><input type="text" id="comp1"></div>
+    <div class="field"><label>(2)</label><input type="text" id="comp2"></div>
+    <div class="field"><label>(3)</label><input type="text" id="comp3"></div>
+    <div class="field"><label>(4)</label><input type="text" id="comp4"></div>
+    <div class="field span2"><label>(5)</label><input type="text" id="comp5"></div>
+  </div>
+
+  <div class="g2">
+    <div class="field">
+      <label>1.3 Capacity (Installed / Production / Volumes) <span class="req">*</span></label>
+      <input type="text" id="capacity" placeholder="e.g. 500 tonnes/yr, 200 beds, 50,000 m²">
+    </div>
+    <div class="field">
+      <label>Land Take</label>
+      <input type="text" id="land_take" placeholder="e.g. 2.5 ha">
+    </div>
+  </div>
+
+  <div class="sub-head">1.3 Wastes (type, quantity and receiving medium, if applicable)</div>
+  <div class="g2">
+    <div class="field">
+      <label>Liquid Waste</label>
+      <textarea id="liquid_waste" rows="3" placeholder="Describe type, estimated quantity, disposal/treatment method and receiving medium…"></textarea>
+    </div>
+    <div class="field">
+      <label>Solid Waste</label>
+      <textarea id="solid_waste" rows="3" placeholder="Describe type, estimated quantity, disposal/treatment method and receiving medium…"></textarea>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Comments on the Description of the Undertaking <span class="req">*</span></label>
+    <textarea id="desc_comments" rows="4" placeholder="Provide overall assessment comments on the proposed undertaking…"></textarea>
+  </div>
+
+  <!-- ── SECTION B ── -->
+  <div class="section-head">
+    <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+    Section B: Site Information
+  </div>
+  <div class="sub-head">2.0 Location and Surroundings</div>
+
+  <div class="g3">
+    <div class="field"><label>2.1 Plot No.</label><input type="text" id="plot_no" placeholder="Plot number"></div>
+    <div class="field"><label>Street / Area Name <span class="req">*</span></label><input type="text" id="street_name"></div>
+    <div class="field"><label>Town <span class="req">*</span></label><input type="text" id="town"></div>
+    <div class="field"><label>District <span class="req">*</span></label><input type="text" id="district"></div>
+    <div class="field">
+      <label>Region <span class="req">*</span></label>
+      <select id="region">
+        <option value="">— Select Region —</option>
+        <option>Ahafo</option>
+        <option>Ashanti</option>
+        <option>Bono</option>
+        <option>Bono East</option>
+        <option>Central</option>
+        <option>Eastern</option>
+        <option>Greater Accra</option>
+        <option>North East</option>
+        <option>Northern</option>
+        <option>Oti</option>
+        <option>Savannah</option>
+        <option>Upper East</option>
+        <option>Upper West</option>
+        <option>Volta</option>
+        <option>Western</option>
+        <option>Western North</option>
+      </select>
+    </div>
+    <div class="field"><label>Major Landmark (if any) <span class="req">*</span></label><input type="text" id="landmark"></div>
+  </div>
+
+  <div class="sub-head">2.2 Current Zoning &amp; Adjacent Land Use</div>
+  <div class="g2">
+    <div class="field"><label>Current Zoning</label><input type="text" id="zoning" placeholder="e.g. Industrial, Residential, Mixed Use…"></div>
+    <div class="field"><label>Adjacent Land Use – North <span class="req">*</span></label><input type="text" id="adj_north"></div>
+    <div class="field"><label>Adjacent Land Use – South <span class="req">*</span></label><input type="text" id="adj_south"></div>
+    <div class="field"><label>Adjacent Land Use – East <span class="req">*</span></label><input type="text" id="adj_east"></div>
+    <div class="field"><label>Adjacent Land Use – West <span class="req">*</span></label><input type="text" id="adj_west"></div>
+  </div>
+
+  <div class="field">
+    <label>2.3 Existing Infrastructure &amp; Facilities on Site <span class="req">*</span></label>
+    <textarea id="infrastructure" rows="3" placeholder="Describe existing structures, utilities, access roads, drainage…"></textarea>
+  </div>
+
+  <div class="sub-head">2.4 Coordinates <span class="req">*</span></div>
+  <div class="map-box">
+    <svg width="28" height="28" fill="none" stroke="#558b2f" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3" fill="#c8e6c9" stroke="#558b2f"/></svg>
+    <span>Record GPS coordinates from your field device below</span>
+  </div>
+  <div class="g4">
+    <div class="field"><label>Latitude (°) <span class="req">*</span></label><input type="text" id="lat" placeholder="e.g. 6.6885"></div>
+    <div class="field"><label>Longitude (°) <span class="req">*</span></label><input type="text" id="lng" placeholder="e.g. -1.6244"></div>
+    <div class="field"><label>Altitude (m)</label><input type="text" id="alt" placeholder="e.g. 285"></div>
+    <div class="field"><label>Accuracy (m)</label><input type="text" id="accuracy" placeholder="e.g. 5"></div>
+  </div>
+
+  <div class="field">
+    <label>2.5 Comments on Site Information (appropriateness, sensitivity, compatibility etc.)</label>
+    <textarea id="site_comments" rows="4"></textarea>
+  </div>
+
+  <!-- ── SECTION C ── -->
+  <div class="section-head">
+    <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    Section C: Environmental Impacts
+  </div>
+  <div class="sub-head">3.0 Possible Potential Environmental Impacts of the Proposed Undertaking</div>
+
+  <div class="field">
+    <label>3.1 Constructional Phase <span class="req">*</span></label>
+    <textarea id="impact_construction" rows="5" placeholder="List and describe potential environmental impacts during the construction phase (noise, dust, erosion, vegetation clearance, waste generation, etc.)…"></textarea>
+  </div>
+  <div class="field">
+    <label>Operational Phase <span class="req">*</span></label>
+    <textarea id="impact_operation" rows="5" placeholder="List and describe potential environmental impacts during the operational phase (emissions, effluents, solid waste, odour, traffic, etc.)…"></textarea>
+  </div>
+  <div class="field">
+    <label>3.3 Have these impacts been addressed by the proponent in Form EA1? If not, indicate potential mitigation measures to be adopted. <span class="req">*</span></label>
+    <textarea id="mitigation" rows="5" placeholder="State whether addressed in EA1. If not, propose mitigation measures for each identified impact…"></textarea>
+  </div>
+
+  <!-- ── SECTION D ── -->
+  <div class="section-head">
+    <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Section D: Consultations
+  </div>
+  <div class="sub-head">4.0 Persons Consulted and Their Views</div>
+  <table class="ctable">
+    <thead>
+      <tr><th>#</th><th>Name</th><th>Location / Organisation</th><th>Comments / Views</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><input type="text" id="c1n" placeholder="Full name"></td><td><input type="text" id="c1l"></td><td><input type="text" id="c1c"></td></tr>
+      <tr><td>2</td><td><input type="text" id="c2n"></td><td><input type="text" id="c2l"></td><td><input type="text" id="c2c"></td></tr>
+      <tr><td>3</td><td><input type="text" id="c3n"></td><td><input type="text" id="c3l"></td><td><input type="text" id="c3c"></td></tr>
+      <tr><td>4</td><td><input type="text" id="c4n"></td><td><input type="text" id="c4l"></td><td><input type="text" id="c4c"></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ── SECTION E ── -->
+  <div class="section-head">
+    <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    Section E: Observations, Comments and Recommendations
+  </div>
+  <div class="sub-head">5.0 Observations and Comments</div>
+
+  <div class="field">
+    <label>5.1 Observations <span class="req">*</span></label>
+    <textarea id="observations" rows="5" placeholder="Describe your physical observations and findings from the site visit…"></textarea>
+  </div>
+  <div class="field">
+    <label>5.2 Comments <span class="req">*</span></label>
+    <textarea id="comments_e" rows="5" placeholder="Provide professional comments based on the observations and overall assessment…"></textarea>
+  </div>
+  <div class="field">
+    <label>Special Permit Condition (if any)</label>
+    <textarea id="special_condition" rows="3" placeholder="State any special conditions to be attached to the permit, if applicable…"></textarea>
+  </div>
+
+  <div class="sub-head">5.4 Recommendation</div>
+  <div class="check-group">
+    <label class="check-row"><input type="checkbox" id="rec_permit"> Permit Recommended</label>
+    <label class="check-row"><input type="checkbox" id="rec_additional"> Additional Information Required</label>
+    <label class="check-row"><input type="checkbox" id="rec_per"> PER (Preliminary Environmental Report) Recommended</label>
+    <label class="check-row"><input type="checkbox" id="rec_eia"> EIA (Environmental Impact Assessment) Recommended</label>
+    <label class="check-row"><input type="checkbox" id="rec_declined" onchange="toggleDecline(this)"> Permit Declined</label>
+  </div>
+  <div id="decline_box" style="display:none;margin-top:12px">
+    <div class="field">
+      <label>If permit declined, give reasons <span class="req">*</span></label>
+      <textarea id="decline_reasons" rows="4"></textarea>
+    </div>
+  </div>
+
+  <!-- ── SECTION F ── -->
+  <div class="section-head">
+    <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><polyline points="9 11 12 14 22 4"/></svg>
+    Section F: Declaration
+  </div>
+  <p style="font-size:13px;color:#555;margin-bottom:14px;line-height:1.65">
+    We the undersigned hereby declare that the information provided on this form is true and accurate to the best of our knowledge, and that this form was completed following an actual visit to the project site.
+  </p>
+
+  <div class="decl-grid">
+    <div class="decl-card">
+      <p class="decl-label">Officer 1</p>
+      <div class="field"><label>Name <span class="req">*</span></label><input type="text" id="decl1_name"></div>
+      <div>
+        <label style="font-size:12.5px;font-weight:600;color:#444;display:block;margin-bottom:4px">Signature</label>
+        <canvas class="sig-pad" id="sig1" width="420" height="72"></canvas>
+        <div class="sig-ctrl"><button class="sig-clear" type="button" onclick="clearSig('sig1')">Clear</button></div>
+      </div>
+      <div class="field" style="margin-top:8px"><label>Date <span class="req">*</span></label><input type="date" id="decl1_date"></div>
+    </div>
+    <div class="decl-card">
+      <p class="decl-label">Officer 2</p>
+      <div class="field"><label>Name <span class="req">*</span></label><input type="text" id="decl2_name"></div>
+      <div>
+        <label style="font-size:12.5px;font-weight:600;color:#444;display:block;margin-bottom:4px">Signature</label>
+        <canvas class="sig-pad" id="sig2" width="420" height="72"></canvas>
+        <div class="sig-ctrl"><button class="sig-clear" type="button" onclick="clearSig('sig2')">Clear</button></div>
+      </div>
+      <div class="field" style="margin-top:8px"><label>Date <span class="req">*</span></label><input type="date" id="decl2_date"></div>
+    </div>
+  </div>
+
+  <!-- ── BUTTONS ── -->
+  <div class="btn-row">
+    <button class="btn btn-pdf" type="button" onclick="savePDF()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+      Save as PDF
+    </button>
+    <button class="btn btn-draft" type="button" onclick="saveDraft()">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Save Draft
+    </button>
+    <button class="btn btn-submit" type="button" onclick="submitForm()">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      Submit Form
+    </button>
+    <button class="btn btn-reset" type="button" onclick="resetForm()">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+      Reset
+    </button>
+  </div>
+  <p class="req-note">Fields marked <span>*</span> are required &nbsp;·&nbsp; Draft auto-saves every 30 seconds</p>
+
+</div><!-- /form-body -->
+</div><!-- /page-wrap -->
+
+<div id="toast"></div>
+
+<script>
+/* ── Signature pads ── */
+['sig1','sig2'].forEach(function(id){
+  var c=document.getElementById(id),ctx=c.getContext('2d'),drawing=false;
+  function pos(e){var r=c.getBoundingClientRect(),sx=c.width/r.width,sy=c.height/r.height,s=e.touches?e.touches[0]:e;return{x:(s.clientX-r.left)*sx,y:(s.clientY-r.top)*sy}}
+  function start(e){e.preventDefault();drawing=true;var p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)}
+  function move(e){e.preventDefault();if(!drawing)return;var p=pos(e);ctx.lineWidth=1.9;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#1a1a1a';ctx.lineTo(p.x,p.y);ctx.stroke()}
+  function stop(e){e.preventDefault();drawing=false}
+  c.addEventListener('mousedown',start);c.addEventListener('mousemove',move);c.addEventListener('mouseup',stop);c.addEventListener('mouseleave',stop);
+  c.addEventListener('touchstart',start,{passive:false});c.addEventListener('touchmove',move,{passive:false});c.addEventListener('touchend',stop);
+});
+function clearSig(id){var c=document.getElementById(id);c.getContext('2d').clearRect(0,0,c.width,c.height)}
+
+/* ── Toggle decline ── */
+function toggleDecline(cb){document.getElementById('decline_box').style.display=cb.checked?'block':'none'}
+
+/* ── Toast ── */
+function toast(msg,type){var t=document.getElementById('toast');t.textContent=msg;t.className='show '+(type||'');setTimeout(function(){t.className=''},3200)}
+
+/* ── Collect ── */
+function collect(){var d={};document.querySelectorAll('input[id],textarea[id],select[id]').forEach(function(el){d[el.id]=el.type==='checkbox'?el.checked:el.value});return d}
+
+/* ── Restore ── */
+function restore(d){Object.keys(d).forEach(function(id){var el=document.getElementById(id);if(!el)return;el.type==='checkbox'?el.checked=d[id]:el.value=d[id]});if(d.rec_declined)document.getElementById('decline_box').style.display='block'}
+
+/* ── Save Draft ── */
+function saveDraft(){try{localStorage.setItem('epa_screen_v2',JSON.stringify(collect()));toast('Draft saved.','');} catch(e){toast('Could not save draft.','err')}}
+
+/* ── Auto-save ── */
+setInterval(function(){try{localStorage.setItem('epa_screen_v2',JSON.stringify(collect()))}catch(e){}},30000);
+
+/* ── Load draft ── */
+window.addEventListener('load',function(){try{var s=localStorage.getItem('epa_screen_v2');if(s)restore(JSON.parse(s))}catch(e){}});
+
+/* ── PDF ── */
+function savePDF(){
+  var reg=document.getElementById('reg_no').value.trim()||'screening';
+  var co=document.getElementById('company_name').value.trim()||'form';
+  var orig=document.title;
+  document.title='EPA_Screening_'+reg.replace(/\//g,'_')+'_'+co.replace(/\s+/g,'_');
+  window.print();
+  setTimeout(function(){document.title=orig},2000);
+}
+
+/* ── Validate & Submit ── */
+var REQ=['reg_no','date_receipt','date_inspection','company_name','type_undertaking',
+  'comp1','comp2','comp3','capacity','desc_comments',
+  'street_name','town','district','region','landmark',
+  'adj_north','adj_south','adj_east','adj_west','infrastructure','lat','lng',
+  'impact_construction','impact_operation','mitigation',
+  'observations','comments_e','decl1_name','decl1_date','decl2_name','decl2_date'];
+
+function submitForm(){
+  var bad=[];
+  REQ.forEach(function(id){var el=document.getElementById(id);if(!el)return;if(!el.value.trim()){el.classList.add('invalid');bad.push(id)}else el.classList.remove('invalid')});
+  if(document.getElementById('rec_declined').checked){var dr=document.getElementById('decline_reasons');if(!dr.value.trim()){dr.classList.add('invalid');bad.push('decline_reasons')}else dr.classList.remove('invalid')}
+  if(bad.length){toast(bad.length+' required field(s) incomplete. Highlighted in red.','err');document.getElementById(bad[0]).scrollIntoView({behavior:'smooth',block:'center'});return}
+  toast('Form submitted successfully!','');
+}
+
+/* ── Reset ── */
+function resetForm(){
+  if(!confirm('Reset all fields? Draft will be cleared.'))return;
+  document.querySelectorAll('input[id],textarea[id],select[id]').forEach(function(el){el.type==='checkbox'?el.checked=false:el.value='';el.classList.remove('invalid')});
+  clearSig('sig1');clearSig('sig2');
+  document.getElementById('decline_box').style.display='none';
+  localStorage.removeItem('epa_screen_v2');
+  toast('Form reset.','');
+}
+
+/* ── Remove invalid on type ── */
+document.addEventListener('input',function(e){if(e.target.classList.contains('invalid'))e.target.classList.remove('invalid')});
+document.addEventListener('change',function(e){if(e.target.classList.contains('invalid'))e.target.classList.remove('invalid')});
+</script>
+</body>
+</html>
